@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './homeScreen/Header';
 import Items from './homeScreen/Items';
 import Login from './login/login';
+import Cart from './cartView/cartView';
 import SelectedProduct from './productView/SelectedProduct';
 
     class App extends Component {
@@ -33,6 +34,9 @@ import SelectedProduct from './productView/SelectedProduct';
                     break;
                 case 'productsView':
                     visibleComponent = <SelectedProduct handleViewChange={this.handleViewChange} />
+                    break;
+                case 'cartView':
+                    visibleComponent = <Cart handleViewChange={this.handleViewChange} />
                     break;
                 default:
                     visibleComponent = <Login handleViewChange={this.handleViewChange} />
