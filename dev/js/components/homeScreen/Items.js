@@ -32,12 +32,14 @@ class Products extends Component {
         this.setState({
             purchaseTypeMen: value
         });
+        this.props.updatePurchaseTypeMen(value);
     }
 
     onPurchaseTypeChangeWomen(value) {
         this.setState({
             purchaseTypeWomen: value
         });
+        this.props.updatePurchaseTypeWomen(value);
     }
 
     handleProceedButton() {
@@ -102,10 +104,10 @@ class Products extends Component {
                     <h4> buy @ 1000 / buy 2 @ Rs : 1500</h4>
                     <div className="radioButtons">
                         <RadioGroup onChange={this.onPurchaseTypeChangeMen} horizontal>
-                            <RadioButton rootColor={"black"} pointColor={"blue"} value="single">
+                            <RadioButton rootColor={"black"} pointColor={"blue"} value="simple">
                                 Buy
                     </RadioButton>
-                            <RadioButton rootColor={"black"} pointColor={"blue"} value="share">
+                            <RadioButton rootColor={"black"} pointColor={"blue"} value="threshold">
                                 Share and Buy
                     </RadioButton>
                     <button className="btn btn-primary buyNowButton" onClick = {this.goToCart}>
@@ -131,10 +133,10 @@ class Products extends Component {
                     <h4>Buy @ 699</h4>
                     <div className="radioButtons">
                         <RadioGroup onChange={this.onPurchaseTypeChangeWomen} horizontal>
-                            <RadioButton rootColor={"black"} pointColor={"blue"} value="single">
+                            <RadioButton rootColor={"black"} pointColor={"blue"} value="simple">
                                 Buy
                     </RadioButton>
-                            <RadioButton rootColor={"black"} pointColor={"blue"} disabled={true} value="share">
+                            <RadioButton rootColor={"black"} pointColor={"blue"} disabled={true} value="threshold">
                                 Share and Buy
                     </RadioButton>
                         </RadioGroup>
@@ -147,7 +149,6 @@ class Products extends Component {
                             {this.getCheckoutButton()}
                         </div>
                     </div>
-
                 </div>
             </div>
         );
@@ -156,7 +157,22 @@ class Products extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        itemDetails: state.promotionData
+        itemDetails: state.itemsDetails
     }
 }
-export default connect(mapStateToProps, null)(Products);
+function mapDispatchToProps(dispatch) {
+    return {
+        updatePurchaseTypeMen: (value) => {
+            dispatch({
+                type: 'UPDATE_PURCHASE_TYPE_MEN', value
+            })
+        },
+        updatePurchaseTypeWomen: (value) => {
+            dispatch({
+                type: 'UPDATE_PURCHASE_TYPE_WOMEN', value
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
