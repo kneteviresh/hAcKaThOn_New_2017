@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import men from '../../../images/men.jpg';
 import './cartView.scss';
+import { connect } from 'react-redux';
 
-export default class cartView extends Component{
+class cartView extends Component{
     render(){
         return(
             <div className="container">
@@ -38,3 +39,12 @@ export default class cartView extends Component{
     }
 
 }
+function mapStateToProps(state, ownProps) {
+    console.log("inside cart");
+    console.log(state.itemsDetails);
+    return {
+        itemDetails: state.itemsDetails
+    }
+}
+
+export default connect(mapStateToProps, null)(cartView);
