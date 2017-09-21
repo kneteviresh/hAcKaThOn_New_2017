@@ -54,12 +54,13 @@ class SelectedProduct extends Component {
                         <div className="col-md-2">
                             <img className="img-responsive resizeImage" src={men} />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-7">
                             <table>
                                 <tr>
-                                    <td className="marginItem"><strong> ItemDescription:</strong></td>
-                                    <td> {this.props.itemDetails.menProductName}</td>
+                                    <td className="col-md-2"><strong> ItemDescription:</strong></td>
+                                    <td className="col-md-4"> {this.props.itemDetails.menProductName}</td>
                                 </tr>
+<<<<<<< HEAD
                                 <br />
                                 <tr className="marginItem">
                                     <td><strong>Price:</strong> </td>
@@ -69,6 +70,17 @@ class SelectedProduct extends Component {
                                 <tr className="marginItem">
                                     <td><strong> Quantity:</strong> </td>
                                     <td> {this.props.itemDetails.menQuantity}  </td>
+=======
+                                <br/>
+                                <tr>
+                                    <td className="col-md-2"><strong>Price:</strong> </td>
+                                    <td className="col-md-4"> Buy 1 @{this.props.itemDetails.menPriceAlone}/ Buy 2 @{this.props.itemDetails.menPriceShare}  </td>
+                                </tr >
+                                                          <br/>
+                                <tr>
+                                    <td className="col-md-2"><strong> Quantity:</strong> </td>
+                                    <td className="col-md-4"> {this.props.itemDetails.menQuantity}  </td>
+>>>>>>> c08c1be90c0122fca1385a0b01c115ed91641b41
                                 </tr>
                                 <br />
                             </table>
