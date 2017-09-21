@@ -52,6 +52,11 @@ class cartView extends Component{
                         
                     </tbody>
                 </table>
+                <div className="row">
+                    <div className = "col-md-8">
+                       <button className="btn btn-primary buyNowButton" style={{ width: "180px", float: "right" }}><span><strong>Place Order</strong></span></button>
+                    </div>
+                    </div>
                 </div>
         )
     }
