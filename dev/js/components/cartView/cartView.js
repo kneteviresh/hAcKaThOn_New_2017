@@ -4,6 +4,24 @@ import './cartView.scss';
 import { connect } from 'react-redux';
 
 class cartView extends Component{
+    constructor(props, context){
+        super(props, context);
+        this.calculatePrice = this.calculatePrice.bind(this);
+    }
+    calculatePrice(){
+        let iteminStore = this.props.itemDetails;
+        if(iteminStore.menSharePurchaseType == "share"){
+            return iteminStore.menPriceShare/2
+        }
+        else if((iteminStore.menQuantity) == 1 && (iteminStore.menSharePurchaseType == "own")) {
+            return this.props.itemDetails.menPriceAlone
+            
+        }
+        else if((iteminStore.menQuantity == 2) && (iteminStore.menSharePurchaseType == "own")) {
+            return iteminStore.menPriceShare
+            
+        }
+    }
     render(){
         return(
             <div className="container">
@@ -25,11 +43,11 @@ class cartView extends Component{
                             <td>
                                 <img className="img-responsive itemImageMen" src={men} />
                                 </td>
-                                <td>FabAlley Black Polka Dot Print Maxi Skirt</td>
+                                <td>{this.props.itemDetails.menProductName}</td>
                                 <td> 40</td>
-                                <td>1 </td>
+                                <td>{this.props.itemDetails.menQuantity} </td>
                                 <td>Wiztech Corp</td>
-                                <td> Rs.400 </td> 
+                                <td>{this.calculatePrice()}  </td> 
                             </tr>
                         
                     </tbody>
@@ -40,9 +58,8 @@ class cartView extends Component{
 
 }
 function mapStateToProps(state, ownProps) {
-    console.log("inside cart");
     console.log(state.itemsDetails);
-    return {
+     return {
         itemDetails: state.itemsDetails
     }
 }
