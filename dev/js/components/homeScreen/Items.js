@@ -4,14 +4,14 @@ import { RadioGroup, RadioButton } from 'react-radio-buttons';
 class Products extends Component {
     constructor(props, context) {
         super(props, context);
-        this.setState({
+        this.state={
             purchaseType: "single"
-        });
+        };
 
     }
 
     onPurchaseTypeChange(e) {
-        sst({
+        this.setState({
             purchaseType: e.target.value
         })
     }
@@ -34,6 +34,6 @@ class Products extends Component {
             </div>
         );
     }
-}
+ }
 
 export default Products;
