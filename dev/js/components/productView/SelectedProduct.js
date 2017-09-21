@@ -109,32 +109,42 @@ class SelectedProduct extends Component {
         var userDetails = this.props.itemDetails[user];
         if (userDetails.requested) {
             component =
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Ratings</th>
-                            <th>Accept</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Kavitha</td>
-                            <td>*****</td>
-                            <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="col-md-5 sharePurchase">
+                    <p style={{ 'color': 'green', 'marginTop': '5px' }}> 2 others interested in sharing this offer</p>
+                    <div>
+                        <table className="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Ratings</th>
+                                    <th>Accept</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Kavitha</td>
+                                    <td>*****</td>
+                                    <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
         }
         else {
             component =
-                <div className="inviteBuyers">
-                    <button onClick={this.handleInviteButton} className="btn btn-primary buyNowButton">Invite</button>
-                    {this.state.isRequestVisible && <div>
-                        <h5>Enter Message</h5>
-                        <textarea required rows={2} ref="message" ></textarea><br />
-                        <button onClick={this.handleInviteSubmit} className="btn btn-primary buyNowButton">Submit</button>
-                    </div>}
+                <div className="col-md-5 sharePurchase">
+                    <p style={{ 'color': 'green', 'marginTop': '5px' }}> Requesr share offer with below invite button</p>
+                    <div>
+                        <div className="inviteBuyers">
+                            <button onClick={this.handleInviteButton} className="btn btn-primary buyNowButton">Invite</button>
+                            {this.state.isRequestVisible && <div>
+                                <h5>Enter Message</h5>
+                                <textarea required rows={2} ref="message" ></textarea><br />
+                                <button onClick={this.handleInviteSubmit} className="btn btn-primary buyNowButton">Submit</button>
+                            </div>}
+                        </div>
+                    </div>
                 </div>
         }
         return component;
@@ -183,12 +193,10 @@ class SelectedProduct extends Component {
                                 {this.getButtonText()}
                             </button>
                         </div>
-                        <div className="col-md-5 sharePurchase">
-                            <p style={{ 'color': 'green', 'marginTop': '5px' }}> 2 others interested in sharing this offer</p>
-                            <div>
 
-                                {this.getShareOfferOptions()}
-                                {/* <table className="table table-bordered">
+
+                        {this.getShareOfferOptions()}
+                        {/* <table className="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -204,8 +212,7 @@ class SelectedProduct extends Component {
                                         </tr>
                                     </tbody>
                                 </table> */}
-                            </div>
-                        </div>
+
                     </div>
                     {/* <div className="row">
                         <div style={{ marginTop: "50px", marginLeft: "220px" }}>
