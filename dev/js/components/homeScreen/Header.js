@@ -17,6 +17,7 @@ class Header extends Component {
     super(props, context);
     this.onClick = this.onClick.bind(this);
     this.getCookie = this.getCookie.bind(this);
+    this.handleSignout = this.handleSignout.bind(this);
   }
   onClick() {
 
@@ -26,6 +27,9 @@ class Header extends Component {
   var regexp = new RegExp("(?:^" + name + "|;\s*"+ name + ")=(.*?)(?:;|$)", "g");
   var result = regexp.exec(document.cookie);
   return (result === null) ? null : result[1];
+}
+handleSignout(){
+this.props.handleViewChange("login");
 }
   render() {
     console.log(this.getCookie("userName"));
@@ -42,6 +46,7 @@ class Header extends Component {
           <NavItem eventKey={2} href="#"><Cart onClick={this.onClick} /></NavItem>
           <NavItem eventKey={3} href="#"><NotificationIcon onClick={this.onClick} /></NavItem>
           <NavItem eventKey={4} href="#"><Bars onClick={this.onClick} /></NavItem>
+          <NavItem eventKey={5} href="#" onClick={this.handleSignout}>Sign Out</NavItem>
 
         </Nav>
 
