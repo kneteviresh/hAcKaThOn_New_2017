@@ -86,7 +86,7 @@ class Products extends Component {
         return <button className="btn btn-primary buyNowButton" onClick={this.handleProceedButton}><span><strong>Proceed</strong></span></button>
     }
     goToCart(){
-         this.props.handleProceedButton();
+         this.props.handleViewChange("cartView")
     }
 
     render() {
@@ -108,9 +108,9 @@ class Products extends Component {
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="share">
                                 Share and Buy
                     </RadioButton>
-                    <RadioButton rootColor={"black"} pointColor={"blue"}value="cart" onClick = {this.goToCart()}>
+                    <button className="btn btn-primary buyNowButton" onClick = {this.goToCart}>
                                 Add To Cart
-                    </RadioButton>
+                    </button>
                         </RadioGroup>
                     </div>
                     <div className="priceDetails">

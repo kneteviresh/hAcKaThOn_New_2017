@@ -35,6 +35,9 @@ import SelectedProduct from './productView/SelectedProduct';
                 case 'productsView':
                     visibleComponent = <SelectedProduct handleViewChange={this.handleViewChange} />
                     break;
+                case 'cartView':
+                    visibleComponent = <Cart handleViewChange={this.handleViewChange} />
+                    break;
                 default:
                     visibleComponent = <Login handleViewChange={this.handleViewChange} />
                     break;
