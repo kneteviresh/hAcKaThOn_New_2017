@@ -10,7 +10,8 @@ class SelectedProduct extends Component {
         super(props, context);
         this.state = {
             shareDivVisible: false,
-            Quantity: "1"
+            Quantity: "1",
+            isRequestVisible: false
         }
         super(props, context);
 
@@ -18,6 +19,14 @@ class SelectedProduct extends Component {
         this.handleQuantity = this.handleQuantity.bind(this);
         this.handleBuyOwn = this.handleBuyOwn.bind(this);
         this.handleAccept = this.handleAccept.bind(this);
+        this.handleInviteButton = this.handleInviteButton.bind(this);
+        this.handleInviteSubmit = this.handleInviteSubmit.bind(this);
+    }
+
+    getCookie(name) {
+        var regexp = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
+        var result = regexp.exec(document.cookie);
+        return (result === null) ? null : result[1];
     }
 
     handleAddToCart() {
@@ -77,6 +86,59 @@ class SelectedProduct extends Component {
         this.props.handleViewChange('cartView');
     }
 
+    handleInviteButton() {
+        this.setState({
+            isRequestVisible: !this.state.isRequestVisible
+        });
+    }
+
+    handleInviteSubmit() {
+        var details = {
+            message: this.refs.message.value,
+            user: this.getCookie("userName")
+        }
+        this.props.updateInviteDetails(details);
+    }
+
+
+
+    getShareOfferOptions() {
+        var user = this.getCookie("userName");
+        var component;
+        var userDetails = this.props.itemDetails[user];
+        if (userDetails.requested) {
+            component =
+                <table className="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Ratings</th>
+                            <th>Accept</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kavitha</td>
+                            <td>*****</td>
+                            <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+        }
+        else {
+            component =
+                <div className="inviteBuyers">
+                    <button onClick={this.handleInviteButton} className="btn btn-primary buyNowButton">Invite</button>
+                    {this.state.isRequestVisible && <div>
+                        <h5>Enter Message</h5>
+                        <textarea required rows={2} ref="message" ></textarea><br />
+                        <button onClick={this.handleInviteSubmit} className="btn btn-primary buyNowButton">Submit</button>
+                    </div>}
+                </div>
+        }
+        return component;
+    }
+
 
     render() {
         return (
@@ -119,7 +181,9 @@ class SelectedProduct extends Component {
                         <div className="col-md-5 sharePurchase">
                             <p style={{ 'color': 'green', 'marginTop': '5px' }}> 2 others interested in sharing this offer</p>
                             <div>
-                                <table className="table table-bordered">
+
+                                {this.getShareOfferOptions()}
+                                {/* <table className="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -133,13 +197,8 @@ class SelectedProduct extends Component {
                                             <td>*****</td>
                                             <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
                                         </tr>
-                                        <tr>
-                                            <td>Shilpi</td>
-                                            <td>***</td>
-                                            <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
-                                        </tr>
                                     </tbody>
-                                </table>
+                                </table> */}
                             </div>
                         </div>
                     </div>
@@ -166,6 +225,11 @@ function mapDispatchToProps(dispatch) {
         updateQuantity: (details) => {
             dispatch({
                 type: 'UPDATE_QUANTITY_MEN', details
+            })
+        },
+        updateInviteDetails: (details) => {
+            dispatch({
+                type: 'UPDATE_INVITES_DETAILS_MEN', details
             })
         }
     }
