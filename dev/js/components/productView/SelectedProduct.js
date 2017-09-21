@@ -17,6 +17,7 @@ class SelectedProduct extends Component {
         this.handleAddToCart = this.handleAddToCart.bind(this);
         this.handleQuantity = this.handleQuantity.bind(this);
         this.handleBuyOwn = this.handleBuyOwn.bind(this);
+        this.handleAccept = this.handleAccept.bind(this);
     }
 
     handleAddToCart() {
@@ -59,7 +60,20 @@ class SelectedProduct extends Component {
 
     handleBuyOwn() {
         var quantity = Number(this.state.Quantity)
-        this.props.updateQuantity(quantity);
+        var details = {
+            quantity: quantity,
+            type: "own"
+        }
+        this.props.updateQuantity(details);
+        this.props.handleViewChange('cartView');
+    }
+
+    handleAccept() {
+        var details = {
+            quantity: 1,
+            type: "share"
+        }
+        this.props.updateQuantity(details);
         this.props.handleViewChange('cartView');
     }
 
@@ -149,9 +163,9 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateQuantity: (value) => {
+        updateQuantity: (details) => {
             dispatch({
-                type: 'UPDATE_QUANTITY_MEN', value
+                type: 'UPDATE_QUANTITY_MEN', details
             })
         }
     }
