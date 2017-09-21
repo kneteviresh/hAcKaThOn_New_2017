@@ -50,21 +50,21 @@ class SelectedProduct extends Component {
                         <div className="col-md-2">
                             <img className="img-responsive resizeImage" src={men} />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-7">
                             <table>
                                 <tr>
-                                    <td className="marginItem col-md-3"><strong> ItemDescription:</strong></td>
-                                    <td className="marginItem col-md-3"> {this.props.itemDetails.menProductName}</td>
+                                    <td className="col-md-2"><strong> ItemDescription:</strong></td>
+                                    <td className="col-md-4"> {this.props.itemDetails.menProductName}</td>
                                 </tr>
                                 <br/>
-                                <tr className="marginItem">
-                                    <td className="marginItem col-md-3"><strong>Price:</strong> </td>
-                                    <td className="marginItem col-md-3"> Buy 1 @{this.props.itemDetails.menPriceAlone}/ Buy 2 @{this.props.itemDetails.menPriceShare}  </td>
+                                <tr>
+                                    <td className="col-md-2"><strong>Price:</strong> </td>
+                                    <td className="col-md-4"> Buy 1 @{this.props.itemDetails.menPriceAlone}/ Buy 2 @{this.props.itemDetails.menPriceShare}  </td>
                                 </tr >
                                                           <br/>
-                                <tr className="marginItem">
-                                    <td className="marginItem col-md-3"><strong> Quantity:</strong> </td>
-                                    <td className="marginItem col-md-3"> {this.props.itemDetails.menQuantity}  </td>
+                                <tr>
+                                    <td className="col-md-2"><strong> Quantity:</strong> </td>
+                                    <td className="col-md-4"> {this.props.itemDetails.menQuantity}  </td>
                                 </tr>
                                                           <br/>
                             </table>
