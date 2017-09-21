@@ -5,10 +5,33 @@ import women from '../../../images/women.jpg';
 
 class SelectedProduct extends Component {
     constructor(props, context) {
+         super(props, context);
+        this.state = {
+            shareDivVisible : false
+        }
         super(props, context);
             this.renderButtons = this.renderButtons.bind(this);
+            this.shareDetails = this.shareDetails.bind(this);
     }
     
+    shareDetails(){
+        this.setState({
+            shareDivVisible:!this.state.shareDivVisible
+        });
+    }
+    getShareDiv(){
+        var sharedDiv;
+        if(this.state.shareDivVisible){
+        sharedDiv = 
+        <div>
+            <h1>user1 </h1>
+        </div>
+        }
+        else{
+            sharedDiv = '';
+        }
+        return sharedDiv;
+    }
     renderButtons(){
     
     }
@@ -40,8 +63,8 @@ class SelectedProduct extends Component {
              
             </div>
                     </div>
-              <div style={{marginTop: "50px"}}><button type="button" className="btn btn-primary">Share n Save</button>
-            
+              <div style={{marginTop: "50px"}}><button type="button" className="btn btn-primary" onClick={this.shareDetails}>Share n Save</button>
+            {this.getShareDiv()}
             <button type="button" style={{marginLeft: "50px"}}>Buy Now</button>
                      </div>  
                 </div>
