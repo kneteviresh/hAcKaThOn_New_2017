@@ -68,10 +68,10 @@ class Products extends Component {
                     <div className="radioButtons">
                         <RadioGroup onChange={this.onPurchaseTypeChangeMen} horizontal>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="simple">
-                                Buy
+                                Buy single
                             </RadioButton>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="threshold">
-                                Share and Buy
+                                Buy Multiple
                             </RadioButton>
                         </RadioGroup>
                     </div>
@@ -94,10 +94,10 @@ class Products extends Component {
                     <div className="radioButtons">
                         <RadioGroup onChange={this.onPurchaseTypeChangeWomen} horizontal>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="simple">
-                                Buy
+                                Buy Single
                             </RadioButton>
                             <RadioButton rootColor={"black"} pointColor={"blue"} disabled={true} value="threshold">
-                                Share and Buy
+                                Buy Multiple
                             </RadioButton>
                         </RadioGroup>
                     </div>

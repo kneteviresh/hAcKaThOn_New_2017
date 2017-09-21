@@ -16,6 +16,7 @@ class SelectedProduct extends Component {
 
         this.handleAddToCart = this.handleAddToCart.bind(this);
         this.handleQuantity = this.handleQuantity.bind(this);
+        this.handleBuyOwn = this.handleBuyOwn.bind(this);
     }
 
     handleAddToCart() {
@@ -56,6 +57,12 @@ class SelectedProduct extends Component {
             return <span> Buy 1 @ 1000 </span>
     }
 
+    handleBuyOwn() {
+        var quantity = Number(this.state.Quantity)
+        this.props.updateQuantity(quantity);
+        this.props.handleViewChange('cartView');
+    }
+
 
     render() {
         return (
@@ -91,7 +98,7 @@ class SelectedProduct extends Component {
                         <div className="col-md-5 ownPurchase">
                             <p style={{ 'color': 'green', 'marginTop': '5px' }}> this product is available for buy 2 offer</p>
                             <h3>Enter Quantity : <input defaultValue={1} min={1} max={2} className="form-control" type="number" onChange={this.handleQuantity} /></h3>
-                            <button style={{ 'fontSize': '20px' }} className="btn btn-primary buyNowButton">
+                            <button onClick={this.handleBuyOwn} style={{ 'fontSize': '20px' }} className="btn btn-primary buyNowButton">
                                 {this.getButtonText()}
                             </button>
                         </div>
@@ -140,4 +147,15 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, null)(SelectedProduct);
+function mapDispatchToProps(dispatch) {
+    return {
+        updateQuantity: (value) => {
+            dispatch({
+                type: 'UPDATE_QUANTITY_MEN', value
+            })
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectedProduct);
