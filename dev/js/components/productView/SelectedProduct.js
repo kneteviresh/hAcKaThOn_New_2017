@@ -10,22 +10,12 @@ class SelectedProduct extends Component {
     }
     
     renderButtons(){
-        if(true)
-            {<div><button type="button" className="btn btn-primary">Share n Save</button>
-            <button type="button">Buy Now</button>
-            </div>
     
-    }
-        else{
-            <div>
-            <button type="button">Buy Now</button>
-            </div>
-        }
     }
     render() {
         return (
             <div className="boldFont">
-                <div className="container" style={{ marginTop: "200px" }}>
+                <div className="container" style={{ marginTop: "200px"}}>
                     <div className="row">
                     <div className="col-md-2">
                         <img className="img-responsive resizeImage" src={men} />
@@ -34,7 +24,7 @@ class SelectedProduct extends Component {
                         <table>
                         <tr>
                            <td className="marginItem"> ItemDescription:</td>
-                           <td>   Proline: Men T-shirt</td>
+                           <td> Proline: Men T-shirt</td>
                         </tr>
                         <tr className="marginItem">
                            <td> Price: </td>
@@ -47,9 +37,12 @@ class SelectedProduct extends Component {
                         </table>
                     </div>
                     <div className="col-md-4">
-             {this.renderButtons}
+             
+            </div>
                     </div>
-              
+              <div style={{marginTop: "50px"}}><button type="button" className="btn btn-primary">Share n Save</button>
+            
+            <button type="button" style={{marginLeft: "50px"}}>Buy Now</button>
                      </div>  
                 </div>
             </div>
