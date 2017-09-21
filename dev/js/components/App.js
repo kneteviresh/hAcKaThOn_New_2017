@@ -45,8 +45,8 @@ class App extends Component {
         return (
             <div>
                 {this.showLoginPage()}
-                {this.showItemList()}
                 {this.showHeaderPage()}
+                {this.showItemList()}     
 
             </div>
         );
