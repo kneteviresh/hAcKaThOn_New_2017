@@ -1,0 +1,83 @@
+
+.panel-default {
+    border-color: #ddd;
+    margin-top: 250px;
+    margin-right: 250px;
+    margin-left: 250px;
+    background-color: lightblue;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: lightskyblue;
+    border-color: #ddd;
+    padding-left: 180px;
+    font-size: 20px;
+    font-family: Whitney;
+}
+.login-user-input-email {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.login-user-input {
+    display: block;
+    color: #282c3f;
+    padding-right: 40px;
+    font-size: 15px;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+}
+
+.login-user-input-password {
+    border-top: 1px solid #d5d6d9;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.login-login-button {
+    background-color: dodgerblue;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    border: 0;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-family: Whitney;
+    margin-top:20px
+}
+
+.login-button {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 162px;
+    padding-left: 18%;
+    position: relative;
+    font-size: 13px;
+    font-weight: 500;
+    color: #696b79;
+    height: 50px;
+    border: 1px solid #bfc0c6;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.third-party-buttons{
+    border: 1px solid #bfc0c6;
+    padding-left: 5%;
+    padding-right: 5%;
+    height:50px;
+    text-align: left;
+    display: inline-block;
+}
+
+.login-info-text {
+    color: #94969f;
+    font-size: 12px;
+}

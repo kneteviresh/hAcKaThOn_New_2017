@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './homeScreen/Header';
 import Items from './homeScreen/Items';
+import Login from './login/login';
 
 class App extends Component {
     render() {
@@ -9,6 +10,8 @@ class App extends Component {
                 <h1>hello Viresh</h1>
                 <Header />
              
+                <Items />
+                <Login/>
             </div>
         );
     }
