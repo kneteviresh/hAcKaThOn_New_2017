@@ -122,12 +122,12 @@ class SelectedProduct extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                         <div style={{ marginTop: "50px", marginLeft: "220px" }}>
                             <button type="button" className="btn btn-primary buyNowButton">Share n Save</button>
                             <button onClick={this.handleAddToCart} className="btn btn-primary buyNowButton" style={{ marginLeft: "50px" }}>Add to cart</button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
