@@ -18,7 +18,8 @@ export default class login extends React.Component {
 
     }
 
-    onclickLogin(){        
+    onclickLogin(){   
+            
        this.props.screenChange();           
         
     }
