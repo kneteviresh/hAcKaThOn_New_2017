@@ -98,27 +98,27 @@ class SelectedProduct extends Component {
                         <div className="col-md-5 sharePurchase">
                             <p style={{ 'color': 'green', 'marginTop': '5px' }}> 2 others interested in sharing this offer</p>
                             <div>
-                            <table className="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Name</th>
-                                <th>Ratings</th>
-                                <th>Accept</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Kavitha</td>
-                                <td>*****</td>
-                                <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
-                              </tr>
-                              <tr>
-                                <td>Shilpi</td>
-                                <td>***</td>
-                                <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Ratings</th>
+                                            <th>Accept</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Kavitha</td>
+                                            <td>*****</td>
+                                            <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shilpi</td>
+                                            <td>***</td>
+                                            <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
