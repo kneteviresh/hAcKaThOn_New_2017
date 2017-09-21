@@ -1,5 +1,5 @@
 export default {
-  itemsDetails:{
+  itemsDetails: {
     menProductName: "Proline: Men T-shirt",
     menPriceAlone: 1000,
     menPriceShare: 1500,
@@ -10,7 +10,21 @@ export default {
     womenPriceShare: 1000,
     womenQuantity: 1,
     womenPurchaseType: "simple",
-    menSharePurchaseType:"own"
+    menSharePurchaseType: "own",
+    kavitha: {
+      id: "kavitha",
+      shared:false,
+      requested: false,
+      paymentDone: false,
+      ordeStatus: "Not"
+    },
+    viresh: {
+      id: "viresh",
+      shared:false,
+      requested: false,
+      paymentDone: false,
+      ordeStatus: "Not"
+    }
   }
 };
 

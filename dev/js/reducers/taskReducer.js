@@ -16,8 +16,39 @@ export default function (state = initialState.itemsDetails, action) {
     case 'UPDATE_QUANTITY_MEN':
       return Object.assign({}, state, {
         menQuantity: action.details.quantity,
-        menSharePurchaseType:action.details.type
+        menSharePurchaseType: action.details.type
       })
+
+    case 'UPDATE_INVITES_DETAILS_MEN':
+      var user = action.details.user;
+      var newUser;
+      if (user == "kavitha") {
+        newUser = "viresh";
+        var obj = {
+          id: newUser,
+          shared: false,
+          requested: true,
+          paymentDone: false,
+          ordeStatus: "Not"
+        }
+        return Object.assign({}, state, {
+          viresh: obj
+        })
+      }
+      else {
+        newUser = "kavitha";
+        var obj = {
+          id: newUser,
+          shared: false,
+          requested: true,
+          paymentDone: false,
+          ordeStatus: "Not"
+        }
+        return Object.assign({}, state, {
+          kavitha: obj
+        })
+      }
+
     default:
       return state;
 
