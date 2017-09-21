@@ -53,18 +53,18 @@ class SelectedProduct extends Component {
                         <div className="col-md-6">
                             <table>
                                 <tr>
-                                    <td className="marginItem"><strong> ItemDescription:</strong></td>
-                                    <td> {this.props.itemDetails.menProductName}</td>
+                                    <td className="marginItem col-md-3"><strong> ItemDescription:</strong></td>
+                                    <td className="marginItem col-md-3"> {this.props.itemDetails.menProductName}</td>
                                 </tr>
                                 <br/>
                                 <tr className="marginItem">
-                                    <td><strong>Price:</strong> </td>
-                                    <td> Buy 1 @{this.props.itemDetails.menPriceAlone}/ Buy 2 @{this.props.itemDetails.menPriceShare}  </td>
+                                    <td className="marginItem col-md-3"><strong>Price:</strong> </td>
+                                    <td className="marginItem col-md-3"> Buy 1 @{this.props.itemDetails.menPriceAlone}/ Buy 2 @{this.props.itemDetails.menPriceShare}  </td>
                                 </tr >
                                                           <br/>
                                 <tr className="marginItem">
-                                    <td><strong> Quantity:</strong> </td>
-                                    <td> {this.props.itemDetails.menQuantity}  </td>
+                                    <td className="marginItem col-md-3"><strong> Quantity:</strong> </td>
+                                    <td className="marginItem col-md-3"> {this.props.itemDetails.menQuantity}  </td>
                                 </tr>
                                                           <br/>
                             </table>
