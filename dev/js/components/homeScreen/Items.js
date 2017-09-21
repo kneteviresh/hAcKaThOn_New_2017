@@ -7,23 +7,31 @@ import women from '../../../images/women.jpg';
 class Products extends Component {
     constructor(props, context) {
         super(props, context);
-        this.setState({
-            purchaseType: "single",
-            price: 1000,
-            priceShare: 1500,
-
-        });
-
+        this.state = {
+            purchaseTypeMen: "single",
+            purchaseTypeWomen: "single",
+            menPrice: 1000,
+            menPriceShare: 1500,
+            womenPrice: 699,
+            womenPriceShare: 1000,
+        };
+        this.onPurchaseTypeChangeMen = this.onPurchaseTypeChangeMen.bind(this);
+        this.onPurchaseTypeChangeWomen = this.onPurchaseTypeChangeWomen.bind(this);
     }
 
-    onPurchaseTypeChange(e) {
-        sst({
-            purchaseType: e.target.value
-        })
+    onPurchaseTypeChangeMen(value) {
+        this.setState({
+            purchaseTypeMen: value
+        });
+    }
+
+    onPurchaseTypeChangeWomen(value) {
+        this.setState({
+            purchaseTypeWomen: value
+        });
     }
 
     render() {
-        console.log(this.state.purchaseType);
         return (
             <div className="container">
                 <div className="col-md-5 productDiv">
@@ -32,7 +40,7 @@ class Products extends Component {
                         <img className="img-responsive" src={men} />
                     </div>
                     <div className="radioButtons">
-                        <RadioGroup onChange={this.onPurchaseTypeChange} horizontal>
+                        <RadioGroup onChange={this.onPurchaseTypeChangeMen} horizontal>
                             <RadioButton value="single">
                                 Buy
                     </RadioButton>
@@ -41,6 +49,9 @@ class Products extends Component {
                     </RadioButton>
                         </RadioGroup>
                     </div>
+                    <div className="priceDetails">
+                        <h2><span>{this.state.purchaseTypeMen == "single" ? this.state.menPrice : (this.state.menPriceShare / 2)}</span></h2>
+                    </div>
                 </div>
                 <div className="col-md-5 productDiv">
                     <a className="shareRequests"><div onClick={this.onSeeShareRequests}><p><span>1</span> share requests</p></div></a>
@@ -48,17 +59,17 @@ class Products extends Component {
                         <img className="img-responsive" src={women} />
                     </div>
                     <div className="radioButtons">
-                        <RadioGroup onChange={this.onPurchaseTypeChange} horizontal>
-                            <RadioButton value="apple">
+                        <RadioGroup onChange={this.onPurchaseTypeChangeWomen} horizontal>
+                            <RadioButton value="single">
                                 Buy
                     </RadioButton>
-                            <RadioButton value="orange">
+                            <RadioButton value="share">
                                 Share and Buy
                     </RadioButton>
                         </RadioGroup>
                     </div>
                     <div className="priceDetails">
-                        <span>{this.state.purchaseType == "single" ? this.state.price : (this.state.priceShare / 2)}</span>
+                        <h2><span>{this.state.purchaseTypeWomen == "single" ? this.state.womenPrice : (this.state.womenPriceShare / 2)}</span></h2>
                     </div>
                 </div>
             </div>
