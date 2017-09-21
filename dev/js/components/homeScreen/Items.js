@@ -43,7 +43,16 @@ class Products extends Component {
     }
 
     handleProceedButton() {
-        this.props.handleViewChange("productsView")
+        if (this.state.purchaseTypeMen == "simple")
+            this.props.handleViewChange("cartView")
+        else
+            this.props.handleViewChange("productsView")
+    }
+
+    getCookie(name) {
+        var regexp = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
+        var result = regexp.exec(document.cookie);
+        return (result === null) ? null : result[1];
     }
 
 
@@ -55,7 +64,15 @@ class Products extends Component {
     }
 
     render() {
-        console.log(this.props.itemDetails)
+        var user = this.getCookie("userName");
+        var component;
+        var userDetails = this.props.itemDetails[user];
+        if (userDetails.requested) {
+            var starVisible = true;
+        }
+        else {
+            var starVisible = false
+        }
         return (
             <div className="container">
                 <div className="col-md-5 productDiv">
@@ -63,7 +80,8 @@ class Products extends Component {
                     <div className="productImage">
                         <img className="img-responsive itemImage" src={men} />
                     </div>
-                    <h3>Proline: Men T-shirt <span style={{ 'color': 'blue', 'float': 'right' }} className="glyphicon glyphicon-share"></span></h3>
+                    <h3>Proline: Men T-shirt
+                       {starVisible && <span style={{ 'color': 'blue', 'float': 'right' }} className="glyphicon glyphicon-star"></span>}</h3>
                     <h4> buy @ 1000 / buy 2 @ Rs : 1500</h4>
                     <div className="radioButtons">
                         <RadioGroup onChange={this.onPurchaseTypeChangeMen} horizontal>
