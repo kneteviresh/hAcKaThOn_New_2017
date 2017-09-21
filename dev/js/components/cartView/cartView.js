@@ -7,6 +7,7 @@ class cartView extends Component{
     constructor(props, context){
         super(props, context);
         this.calculatePrice = this.calculatePrice.bind(this);
+        this.goBack = this.goBack.bind(this);
     }
     calculatePrice(){
         let iteminStore = this.props.itemDetails;
@@ -21,6 +22,9 @@ class cartView extends Component{
             return iteminStore.menPriceShare
             
         }
+    }
+    goBack(){
+        this.props.handleViewChange('productsView');
     }
     render(){
         return(
@@ -53,9 +57,14 @@ class cartView extends Component{
                     </tbody>
                 </table>
                 <div className="row">
-                    <div className = "col-md-8">
+                    <div className = "col-md-2">
                        <button className="btn btn-primary buyNowButton" style={{ width: "180px", float: "right" }}><span><strong>Place Order</strong></span></button>
                     </div>
+                    <div className="col-md-10">
+                <button onClick={this.goBack} style={{ 'fontSize': '20px', 'width': '180px', 'float': 'right'  }} className="btn btn-primary buyNowButton">
+                                Back
+                            </button>
+                </div>
                     </div>
                 </div>
         )
