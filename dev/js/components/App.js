@@ -46,7 +46,7 @@ class App extends Component {
     }
 
     render() {
-        var isHeaderVisible = this.state.visibleComponent == "login" ? '' : <Header />
+        var isHeaderVisible = this.state.visibleComponent == "login" ? '' : <Header handleViewChange={this.handleViewChange} />
         return (
             <div>
                 {isHeaderVisible}
