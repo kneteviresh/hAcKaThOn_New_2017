@@ -121,6 +121,6 @@ class Products extends Component {
             </div>
         );
     }
-}
+ }
 
 export default Products;
