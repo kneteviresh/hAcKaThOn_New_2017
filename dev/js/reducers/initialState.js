@@ -1,5 +1,5 @@
 export default {
-  promotionData: {
+  itemsDetails:{
     menProductName: "Proline: Men T-shirt",
     menPriceAlone: 1000,
     menPriceShare: 1500,

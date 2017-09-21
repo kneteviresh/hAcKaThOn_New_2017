@@ -1,13 +1,14 @@
 import initialState from "./initialState";
 
-export default function (state = initialState.promotionData, action) {
-  switch (action.type) {
-    case "UPDATE_PURCHASE_TYPE":
-      return Object.assign({},
-        state, {
-          menPurchaseType: action.purchaseType
-        })
-    default:
-      return state;
-  }
+export default function(state=initialState.itemsDetails,action){
+switch(action.type){
+    case "ADDNEW_TASK":
+    console.log(action.payload);
+   // console.log(state.todos);
+     return [...state,action.payload];
+default:
+     return state;
+     
+}
+
 }

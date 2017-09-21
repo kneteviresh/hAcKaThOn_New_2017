@@ -86,7 +86,7 @@ class Products extends Component {
     }
 
     render() {
-        console.log(this.props.itemDetails)
+        console.log(this.props)
         return (
             <div className="container">
                 <div className="col-md-5 productDiv">
@@ -149,7 +149,7 @@ class Products extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        itemDetails: state.promotionData
+        itemDetails: state.itemsDetails
     }
 }
 export default connect(mapStateToProps, null)(Products);
