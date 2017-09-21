@@ -30,7 +30,7 @@ class Header extends Component {
         </Navbar.Header>
 
         <Nav pullRight>
-          <NavItem eventKey={1} >Hello User</NavItem>
+          <NavItem eventKey={1} >Hello Kavitha</NavItem>
           <NavItem eventKey={2} href="#"><Cart onClick={this.onClick} /></NavItem>
           <NavItem eventKey={3} href="#"><NotificationIcon onClick={this.onClick} /></NavItem>
           <NavItem eventKey={4} href="#"><Bars onClick={this.onClick} /></NavItem>
