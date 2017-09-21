@@ -25,11 +25,11 @@ class cartView extends Component{
                             <td>
                                 <img className="img-responsive itemImageMen" src={men} />
                                 </td>
-                                <td>FabAlley Black Polka Dot Print Maxi Skirt</td>
+                                <td>{this.props.itemDetails.menProductName}</td>
                                 <td> 40</td>
-                                <td>1 </td>
+                                <td>{this.props.itemDetails.menQuantity} </td>
                                 <td>Wiztech Corp</td>
-                                <td> Rs.400 </td> 
+                                <td>{this.props.itemDetails.menQuantity ==1?1000:1500}  </td> 
                             </tr>
                         
                     </tbody>
@@ -40,9 +40,7 @@ class cartView extends Component{
 
 }
 function mapStateToProps(state, ownProps) {
-    console.log("inside cart");
-    console.log(state.itemsDetails);
-    return {
+     return {
         itemDetails: state.itemsDetails
     }
 }
