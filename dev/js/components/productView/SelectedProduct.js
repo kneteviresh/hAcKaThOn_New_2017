@@ -4,12 +4,13 @@ import men from '../../../images/men.jpg';
 import women from '../../../images/women.jpg';
 import { connect } from 'react-redux';
 
+
 class SelectedProduct extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
             shareDivVisible: false,
-            Quantity: 1
+            Quantity: "1"
         }
         super(props, context);
 
@@ -46,6 +47,16 @@ class SelectedProduct extends Component {
         });
     }
 
+    getButtonText() {
+        var quantity = Number(this.state.Quantity)
+        if (quantity > 0 && quantity < 3) {
+            return <span>Buy {quantity} at <span>{quantity == 1 ? 1000 : 1500}</span> </span>
+        }
+        else
+            return <span> Buy 1 @ 1000 </span>
+    }
+
+
     render() {
         return (
             <div className="boldFont">
@@ -60,27 +71,15 @@ class SelectedProduct extends Component {
                                     <td className="col-md-2"><strong> ItemDescription:</strong></td>
                                     <td className="col-md-4"> {this.props.itemDetails.menProductName}</td>
                                 </tr>
-<<<<<<< HEAD
                                 <br />
-                                <tr className="marginItem">
-                                    <td><strong>Price:</strong> </td>
-                                    <td> Buy 1 @{this.props.itemDetails.menPriceAlone}/ Buy 2 @{this.props.itemDetails.menPriceShare}  </td>
-                                </tr >
-                                <br />
-                                <tr className="marginItem">
-                                    <td><strong> Quantity:</strong> </td>
-                                    <td> {this.props.itemDetails.menQuantity}  </td>
-=======
-                                <br/>
                                 <tr>
                                     <td className="col-md-2"><strong>Price:</strong> </td>
                                     <td className="col-md-4"> Buy 1 @{this.props.itemDetails.menPriceAlone}/ Buy 2 @{this.props.itemDetails.menPriceShare}  </td>
                                 </tr >
-                                                          <br/>
+                                <br />
                                 <tr>
                                     <td className="col-md-2"><strong> Quantity:</strong> </td>
                                     <td className="col-md-4"> {this.props.itemDetails.menQuantity}  </td>
->>>>>>> c08c1be90c0122fca1385a0b01c115ed91641b41
                                 </tr>
                                 <br />
                             </table>
@@ -91,11 +90,9 @@ class SelectedProduct extends Component {
                     <div className="row">
                         <div className="col-md-6 ownPurchase">
                             <p style={{ 'color': 'green' }}>** this product is available for buy 2 offer</p>
-                            <input type="number" onChange={this.handleQuantity} />
-                            <button className="btn-btn-primary">
-                                buy <span>{this.state.Quantity}</span> at <span>
-                                    {this.state.Quantity == 1 ? 1000 : 750}
-                                </span>
+                            <h3>Enter Quantity : <input defaultValue={1} min={1} max={2} className="form-control" type="number" onChange={this.handleQuantity} /></h3>
+                            <button style={{ 'fontSize': '20px' }} className="btn btn-primary buyNowButton">
+                                {this.getButtonText()}
                             </button>
                         </div>
                         <div className="col-md-6 sharePurchase">
@@ -103,8 +100,8 @@ class SelectedProduct extends Component {
                     </div>
                     <div className="row">
                         <div style={{ marginTop: "50px", marginLeft: "220px" }}>
-                            <button type="button" className="btn btn-primary">Share n Save</button>
-                            <button onClick={this.handleAddToCart} className="btn btn-primary" style={{ marginLeft: "50px" }}>Add to cart</button>
+                            <button type="button" className="btn btn-primary buyNowButton">Share n Save</button>
+                            <button onClick={this.handleAddToCart} className="btn btn-primary buyNowButton" style={{ marginLeft: "50px" }}>Add to cart</button>
                         </div>
                     </div>
                 </div>
