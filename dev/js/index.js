@@ -11,6 +11,8 @@ import ProductView from '../js/components/ProductView/SelectedItems';
 
 const store = createStore(allReducers, undefined, composeWithDevTools());
 ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );

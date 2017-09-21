@@ -19,7 +19,7 @@ export default class login extends React.Component {
     }
 
     onclickLogin(){        
-       this.props.screenChange();           
+       this.props.handleViewChange("items");           
         
     }
     onchangeEmail(){

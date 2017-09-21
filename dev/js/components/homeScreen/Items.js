@@ -3,6 +3,7 @@ import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import './homescreen.scss';
 import men from '../../../images/men.jpg';
 import women from '../../../images/women.jpg';
+import { connect } from 'react-redux';
 
 class Products extends Component {
     constructor(props, context) {
@@ -23,6 +24,7 @@ class Products extends Component {
         };
         this.onPurchaseTypeChangeMen = this.onPurchaseTypeChangeMen.bind(this);
         this.onPurchaseTypeChangeWomen = this.onPurchaseTypeChangeWomen.bind(this);
+        this.handleProceedButton = this.handleProceedButton.bind(this);
     }
 
     onPurchaseTypeChangeMen(value) {
@@ -37,8 +39,8 @@ class Products extends Component {
         });
     }
 
-    handleProceedButton(){
-        this.props.handleViewChange("productView")
+    handleProceedButton() {
+        this.props.handleViewChange("productsView")
     }
 
     // getBuyingOptionMen() {
@@ -84,6 +86,7 @@ class Products extends Component {
     }
 
     render() {
+        console.log(this.props.itemDetails)
         return (
             <div className="container">
                 <div className="col-md-5 productDiv">
@@ -91,14 +94,14 @@ class Products extends Component {
                     <div className="productImage">
                         <img className="img-responsive itemImage" src={men} />
                     </div>
-                    <h3>Proline: Men T-shirt <span style={{'color':'blue','float':'right'}} className="glyphicon glyphicon-share"></span></h3>
+                    <h3>Proline: Men T-shirt <span style={{ 'color': 'blue', 'float': 'right' }} className="glyphicon glyphicon-share"></span></h3>
                     <h4> buy @ 1000 / buy 2 @ Rs : 1500</h4>
                     <div className="radioButtons">
                         <RadioGroup onChange={this.onPurchaseTypeChangeMen} horizontal>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="single">
                                 Buy
                     </RadioButton>
-                            <RadioButton rootColor={"black"} pointColor={"blue"}value="share">
+                            <RadioButton rootColor={"black"} pointColor={"blue"} value="share">
                                 Share and Buy
                     </RadioButton>
                         </RadioGroup>
@@ -144,4 +147,9 @@ class Products extends Component {
     }
 }
 
-export default Products;
+function mapStateToProps(state, ownProps) {
+    return {
+        itemDetails: state.promotionData
+    }
+}
+export default connect(mapStateToProps, null)(Products);

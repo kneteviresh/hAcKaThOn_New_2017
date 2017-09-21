@@ -4,55 +4,50 @@ import Items from './homeScreen/Items';
 import Login from './login/login';
 import SelectedProduct from './productView/SelectedProduct';
 
-
-class App extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            isItemsPageVisible: false,
-            isLoginPageVisible: true,
-            isHeaderPageVisible: false,
-            visibleComponent: "login"
+    class App extends Component {
+        constructor(props, context) {
+            super(props, context);
+            this.state = {
+                isItemsPageVisible: false,
+                isLoginPageVisible: true,
+                isHeaderPageVisible: false,
+                visibleComponent: "login"
+            }
+            this.handleViewChange = this.handleViewChange.bind(this);
         }
-        this.onScreenChange = this.onScreenChange.bind(this);
-        this.handleProceedButton = this.handleProceedButton.bind(this);
-    }
 
-    handleProceedButton() {
-        this.setState({
-            visibleComponent: "items"
-        });
-    }
-
-    onScreenChange() {
-        this.setState({
-            visibleComponent: "items"
-        })
-    }
-
-    getComponent() {
-        var visibleComponent;
-        switch (this.state.visibleComponent) {
-            case 'login':
-                visibleComponent = <Login screenChange={this.onScreenChange} />
-                break;
-            case 'items':
-                visibleComponent = <Items handleProceedButton={this.handleProceedButton} />
-                break;
-            default:
-                visibleComponent = <Login screenChange={this.onScreenChange} />
-                break;
+        handleViewChange(newView) {
+            this.setState({
+                visibleComponent: newView
+            });
         }
-        return visibleComponent;
-    }
 
-    render() {
-        return (
-            <div>
-                {this.getComponent()}
-            </div>
-        );
+        getComponent() {
+            var visibleComponent;
+            switch (this.state.visibleComponent) {
+                case 'login':
+                    visibleComponent = <Login handleViewChange={this.handleViewChange} />
+                    break;
+                case 'items':
+                    visibleComponent = <Items handleViewChange={this.handleViewChange} />
+                    break;
+                case 'productsView':
+                    visibleComponent = <SelectedProduct handleViewChange={this.handleViewChange} />
+                    break;
+                default:
+                    visibleComponent = <Login handleViewChange={this.handleViewChange} />
+                    break;
+            }
+            return visibleComponent;
+        }
+
+        render() {
+            return (
+                <div>
+                    {this.getComponent()}
+                </div>
+            );
+        }
     }
-}
 
 export default App;
