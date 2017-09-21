@@ -9,8 +9,8 @@ class Products extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            purchaseTypeMen: "single",
-            purchaseTypeWomen: "single",
+            purchaseTypeMen: "simple",
+            purchaseTypeWomen: "simple",
             purchaseMenPromo: "threshold",
             purchaseWomenPromo: "simple",
             menPrice: 1000,
@@ -24,7 +24,7 @@ class Products extends Component {
         };
         this.onPurchaseTypeChangeMen = this.onPurchaseTypeChangeMen.bind(this);
         this.onPurchaseTypeChangeWomen = this.onPurchaseTypeChangeWomen.bind(this);
-        this.goToCart =this.goToCart.bind(this);
+        this.goToCart = this.goToCart.bind(this);
         this.handleProceedButton = this.handleProceedButton.bind(this);
     }
 
@@ -32,63 +32,26 @@ class Products extends Component {
         this.setState({
             purchaseTypeMen: value
         });
-        this.props.updatePurchaseTypeMen(value);
+        //this.props.updatePurchaseTypeMen(value);
     }
 
     onPurchaseTypeChangeWomen(value) {
         this.setState({
             purchaseTypeWomen: value
         });
-        this.props.updatePurchaseTypeWomen(value);
+        //this.props.updatePurchaseTypeWomen(value);
     }
 
     handleProceedButton() {
         this.props.handleViewChange("productsView")
     }
 
-    // getBuyingOptionMen() {
-    //     var button_text;
-    //     var buyingOptions;
-    //     if (this.state.shareMen) {
-    //         button_text = this.state.shareMen + ' share requests';
-    //     }
-    //     else {
-    //         button_text = "request buyers"
-    //     }
-    //     if (this.state.purchaseTypeMen == "single") {
-    //         buyingOptions =
-    //             <button className="btn btn-primary buyNowButton" onClick={this.buyNow}><span><strong>Buy Now</strong></span></button>
-    //     }
-    //     else {
-    //         buyingOptions =
-    //             <button className="btn btn-primary buyNowButton" onClick={this.ShareAndBuy}><span><strong>{button_text}</strong></span></button>
-    //     }
-    //     return buyingOptions;
-    // }
-
-    // getBuyingOptionWomen() {
-    //     var button_text;
-    //     var buyingOptions;
-    //     if (this.state.shareWomen) {
-    //         button_text = this.state.shareWomen + ' share requests';
-    //     }
-    //     else {
-    //         button_text = "request buyers"
-    //     }
-    //     if (this.state.purchaseTypeWomen == "single") {
-    //         buyingOptions = <button className="btn btn-primary buyNowButton" onClick={this.buyNow}><span><strong>Buy Now</strong></span></button>
-    //     }
-    //     else {
-    //         buyingOptions = <button className="btn btn-primary buyNowButton" onClick={this.ShareAndBuy}><span><strong>{button_text}</strong></span></button>
-    //     }
-    //     return buyingOptions;
-    // }
 
     getCheckoutButton() {
         return <button className="btn btn-primary buyNowButton" onClick={this.handleProceedButton}><span><strong>Proceed</strong></span></button>
     }
-    goToCart(){
-         this.props.handleViewChange("cartView")
+    goToCart() {
+        this.props.handleViewChange("cartView")
     }
 
     render() {
@@ -106,18 +69,15 @@ class Products extends Component {
                         <RadioGroup onChange={this.onPurchaseTypeChangeMen} horizontal>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="simple">
                                 Buy
-                    </RadioButton>
+                            </RadioButton>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="threshold">
                                 Share and Buy
-                    </RadioButton>
-                    <button className="btn btn-primary buyNowButton" onClick = {this.goToCart}>
-                                Add To Cart
-                    </button>
+                            </RadioButton>
                         </RadioGroup>
                     </div>
                     <div className="priceDetails">
                         <div className="col-md-6">
-                            <span style={{ 'fontSize': '30px' }}>{this.state.purchaseTypeMen == "single" ? this.state.menPrice : (this.state.menPriceShare / 2)}</span>
+                            <span style={{ 'fontSize': '30px' }}>{this.state.purchaseTypeMen == "simple" ? this.state.menPrice : (this.state.menPriceShare / 2)}</span>
                         </div>
                         <div className="col-md-6">
                             {this.getCheckoutButton()}
@@ -135,15 +95,15 @@ class Products extends Component {
                         <RadioGroup onChange={this.onPurchaseTypeChangeWomen} horizontal>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="simple">
                                 Buy
-                    </RadioButton>
+                            </RadioButton>
                             <RadioButton rootColor={"black"} pointColor={"blue"} disabled={true} value="threshold">
                                 Share and Buy
-                    </RadioButton>
+                            </RadioButton>
                         </RadioGroup>
                     </div>
                     <div className="priceDetails">
                         <div className="col-md-6">
-                            <span style={{ 'fontSize': '30px' }}>{this.state.purchaseTypeWomen == "single" ? this.state.womenPrice : (this.state.womenPriceShare / 2)}</span>
+                            <span style={{ 'fontSize': '30px' }}>{this.state.purchaseTypeWomen == "simple" ? this.state.womenPrice : (this.state.womenPriceShare / 2)}</span>
                         </div>
                         <div className="col-md-6">
                             {this.getCheckoutButton()}

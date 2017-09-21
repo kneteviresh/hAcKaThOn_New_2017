@@ -11,7 +11,7 @@ class SelectedProduct extends Component {
     }
 
     handleAddToCart(){
-        this.props.handleViewChange('cart')
+        this.props.handleViewChange('cartView')
     }
     render() {
         return (
