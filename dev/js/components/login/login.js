@@ -22,15 +22,15 @@ export default class login extends React.Component {
        this.props.handleViewChange("items");           
         
     }
-    onchangeEmail(){
+    onchangeEmail(e){
         this.setState({
-            userEmail : this.state.userEmail
+            userEmail : e.target.value
         });
 
     }
-    onchangePassword(){
+    onchangePassword(e){
         this.setState({
-            password : this.state.password
+            password : e.target.value
         })
 
     }
@@ -44,10 +44,10 @@ export default class login extends React.Component {
                     <div className="panel-body">      
                            
                         <div>
-                         <input type="text" id="email" placeholder="Your Email Address" className = "login-user-input-email login-user-input" onChange={this.onchangeEmail}/>
+                         <input type="text" id="email" placeholder="Your Email Address" className = "login-user-input-email login-user-input" onChange={this.onchangeEmail} value = {this.state.userEmail}/>
                         </div>
                         <div>
-                            <input type="text" id="password" placeholder= "Enter Password" className = "login-user-input-password login-user-input" onChange={this.onchangePassword}/>
+                            <input type="text" id="password" placeholder= "Enter Password" className = "login-user-input-password login-user-input" onChange={this.onchangePassword} value = {this.state.password}/>
                         </div>
                         <div>
                             <button type="button" className="login-login-button" onClick={this.onclickLogin}> Log in </button>
