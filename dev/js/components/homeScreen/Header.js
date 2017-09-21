@@ -11,16 +11,24 @@ import NotificationIcon from 'react-icons/lib/fa/bell-o';
 import Bars from 'react-icons/lib/fa/bars';
 import Cart from 'react-icons/lib/fa/shopping-cart';
 
+
 class Header extends Component {
   constructor(props, context) {
     super(props, context);
     this.onClick = this.onClick.bind(this);
+    this.getCookie = this.getCookie.bind(this);
   }
   onClick() {
 
     alert("hello");
   }
+  getCookie(name) {
+  var regexp = new RegExp("(?:^" + name + "|;\s*"+ name + ")=(.*?)(?:;|$)", "g");
+  var result = regexp.exec(document.cookie);
+  return (result === null) ? null : result[1];
+}
   render() {
+    console.log(this.getCookie("userName"));
     return (
       <Navbar inverse fluid>
         <Navbar.Header>
@@ -30,7 +38,7 @@ class Header extends Component {
         </Navbar.Header>
 
         <Nav pullRight>
-          <NavItem eventKey={1} >Hello Kavitha</NavItem>
+          <NavItem eventKey={1} >{this.getCookie("userName")}</NavItem>
           <NavItem eventKey={2} href="#"><Cart onClick={this.onClick} /></NavItem>
           <NavItem eventKey={3} href="#"><NotificationIcon onClick={this.onClick} /></NavItem>
           <NavItem eventKey={4} href="#"><Bars onClick={this.onClick} /></NavItem>

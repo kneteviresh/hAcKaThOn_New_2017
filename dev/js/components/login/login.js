@@ -18,7 +18,8 @@ export default class login extends React.Component {
 
     }
 
-    onclickLogin(){        
+    onclickLogin(){  
+        document.cookie = `userName=${this.state.userEmail};path=/`;      
        this.props.handleViewChange("items");           
         
     }

@@ -1,7 +1,7 @@
 import initialState from "./initialState";
 
 export default function (state = initialState.itemsDetails, action) {
-  debugger;
+
   switch (action.type) {
     case "UPDATE_PURCHASE_TYPE_MEN":
       return Object.assign({}, state, {
