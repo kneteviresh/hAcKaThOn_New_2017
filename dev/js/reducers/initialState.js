@@ -4,7 +4,7 @@ export default {
     menPriceAlone: 1000,
     menPriceShare: 1500,
     menQuantity: 1,
-    menPurchaseType: "threshHold",
+    menPurchaseType: "simple",
     womenProductName: "Soch : Traditional kurtas",
     womenPriceAlone: 699,
     womenPriceShare: 1000,
