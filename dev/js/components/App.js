@@ -7,7 +7,8 @@ class App extends Component {
         return (
             <div>
                 <h1>hello Viresh</h1>
-                <Items />
+                <Header />
+             
             </div>
         );
     }
