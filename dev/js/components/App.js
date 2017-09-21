@@ -7,11 +7,9 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1>hello Viresh</h1>
                 <Header />
-             
-                <Items />
-                <Login/>
+                 <Items />
+                <Login/> 
             </div>
         );
     }
