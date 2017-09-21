@@ -87,15 +87,39 @@ class SelectedProduct extends Component {
                         <div className="col-md-4">
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-6 ownPurchase">
-                            <p style={{ 'color': 'green' }}>** this product is available for buy 2 offer</p>
+                    <div style={{ 'marginTop': '10px' }} className="row">
+                        <div className="col-md-5 ownPurchase">
+                            <p style={{ 'color': 'green', 'marginTop': '5px' }}> this product is available for buy 2 offer</p>
                             <h3>Enter Quantity : <input defaultValue={1} min={1} max={2} className="form-control" type="number" onChange={this.handleQuantity} /></h3>
                             <button style={{ 'fontSize': '20px' }} className="btn btn-primary buyNowButton">
                                 {this.getButtonText()}
                             </button>
                         </div>
-                        <div className="col-md-6 sharePurchase">
+                        <div className="col-md-5 sharePurchase">
+                            <p style={{ 'color': 'green', 'marginTop': '5px' }}> 2 others interested in sharing this offer</p>
+                            <div>
+                            <table className="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Ratings</th>
+                                <th>Accept</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Kavitha</td>
+                                <td>*****</td>
+                                <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
+                              </tr>
+                              <tr>
+                                <td>Shilpi</td>
+                                <td>***</td>
+                                <td><button onClick={this.handleAccept} className="btn btn-primary buyNowButton">Accept</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                            </div>
                         </div>
                     </div>
                     <div className="row">
