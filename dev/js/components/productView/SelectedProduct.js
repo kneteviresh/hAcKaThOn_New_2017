@@ -6,12 +6,40 @@ import women from '../../../images/women.jpg';
 class SelectedProduct extends Component {
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            shareDivVisible: false
+        }
+        super(props, context);
 
         this.handleAddToCart = this.handleAddToCart.bind(this);
     }
 
-    handleAddToCart(){
+    handleAddToCart() {
         this.props.handleViewChange('cartView')
+        this.renderButtons = this.renderButtons.bind(this);
+        this.shareDetails = this.shareDetails.bind(this);
+    }
+
+    shareDetails() {
+        this.setState({
+            shareDivVisible: !this.state.shareDivVisible
+        });
+    }
+    getShareDiv() {
+        var sharedDiv;
+        if (this.state.shareDivVisible) {
+            sharedDiv =
+                <div>
+                    <h1>user1 </h1>
+                </div>
+        }
+        else {
+            sharedDiv = '';
+        }
+        return sharedDiv;
+    }
+    renderButtons() {
+
     }
     render() {
         return (
