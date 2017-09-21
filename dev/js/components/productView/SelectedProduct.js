@@ -49,8 +49,8 @@ class SelectedProduct extends Component {
     render() {
         return (
             <div className="boldFont">
-                <div className="container" style={{ marginTop: "50px" }}>
-                    <div className="row" style={{ marginLeft: "200px" }}>
+                <div className="container">
+                    <div className="row">
                         <div className="col-md-2">
                             <img className="img-responsive resizeImage" src={men} />
                         </div>
