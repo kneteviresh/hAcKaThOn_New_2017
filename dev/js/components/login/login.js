@@ -8,8 +8,8 @@ export default class login extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            userEmail : '',
-            password : '',
+            userEmail : 'kavitha.vikas@gmail.com',
+            password : 'test',
             showItemPage : false
                     }
         this.onclickLogin = this.onclickLogin.bind(this);

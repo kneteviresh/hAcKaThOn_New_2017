@@ -22,7 +22,7 @@ export default class cartView extends Component{
                     <tbody>
                         <tr>
                             <td>
-                                <img className="img-responsive itemImage" src={men} />
+                                <img className="img-responsive itemImageMen" src={men} />
                                 </td>
                                 <td>FabAlley Black Polka Dot Print Maxi Skirt</td>
                                 <td> 40</td>
