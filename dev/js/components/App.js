@@ -3,51 +3,52 @@ import Header from './homeScreen/Header';
 import Items from './homeScreen/Items';
 import Login from './login/login';
 
+
 class App extends Component {
-    constructor(props,context)
-    {
+    constructor(props, context) {
         super(props, context);
         this.state = {
-            isItemsPageVisible : false,
-            isLoginPageVisible : true,
-            isHeaderPageVisible :false
-            }
-        this.showItemList = this.showItemList.bind(this);
-        this.showLoginPage = this.showLoginPage.bind(this);
+            isItemsPageVisible: false,
+            isLoginPageVisible: true,
+            isHeaderPageVisible: false,
+            visibleComponent: "login"
+        }
         this.onScreenChange = this.onScreenChange.bind(this);
-        this.showHeaderPage = this.showHeaderPage.bind(this);
+        this.handleProceedButton = this.handleProceedButton.bind(this);
     }
-        showItemList(){
-            if(this.state.isItemsPageVisible){
-                return <Items/>
-            }
-        }
-        showLoginPage(){
-            if(this.state.isLoginPageVisible){
-                return <Login screenChange = {this.onScreenChange}/>
-            }
-        }
-        showHeaderPage(){
-            if(this.state.isHeaderPageVisible){
-                return <Header/>
-            }
 
-        }
-        onScreenChange(){
-            this.setState({
-                isItemsPageVisible : true,
-                isLoginPageVisible : false,
-                isHeaderPageVisible:true
+    handleProceedButton() {
+        this.setState({
+            visibleComponent: "items"
+        });
+    }
 
-            })
+    onScreenChange() {
+        this.setState({
+            visibleComponent: "items"
+        })
+    }
+
+    getComponent() {
+        var visibleComponent;
+        switch (this.state.visibleComponent) {
+            case 'login':
+                visibleComponent = <Login screenChange={this.onScreenChange} />
+                break;
+            case 'items':
+                visibleComponent = <Items handleProceedButton={this.handleProceedButton} />
+                break;
+            default:
+                visibleComponent = <Login screenChange={this.onScreenChange} />
+                break;
         }
+        return visibleComponent;
+    }
+
     render() {
         return (
             <div>
-                {this.showLoginPage()}
-                {this.showHeaderPage()}
-                {this.showItemList()}     
-
+                {this.getComponent()}
             </div>
         );
     }
