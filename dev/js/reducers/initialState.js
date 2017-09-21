@@ -9,7 +9,8 @@ export default {
     womenPriceAlone: 699,
     womenPriceShare: 1000,
     womenQuantity: 1,
-    womenPurchaseType: "simple"
+    womenPurchaseType: "simple",
+    menSharePurchaseType:"own"
   }
 };
 

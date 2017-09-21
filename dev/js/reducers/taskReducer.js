@@ -15,7 +15,8 @@ export default function (state = initialState.itemsDetails, action) {
 
     case 'UPDATE_QUANTITY_MEN':
       return Object.assign({}, state, {
-        menQuantity: action.value
+        menQuantity: action.details.quantity,
+        menSharePurchaseType:action.details.type
       })
     default:
       return state;
