@@ -32,14 +32,14 @@ class Products extends Component {
         this.setState({
             purchaseTypeMen: value
         });
-        //this.props.updatePurchaseTypeMen(value);
+        this.props.updatePurchaseTypeMen(value);
     }
 
     onPurchaseTypeChangeWomen(value) {
         this.setState({
             purchaseTypeWomen: value
         });
-        //this.props.updatePurchaseTypeWomen(value);
+        this.props.updatePurchaseTypeWomen(value);
     }
 
     handleProceedButton() {
@@ -82,7 +82,7 @@ class Products extends Component {
                     </div>
                     <h3>Proline: Men T-shirt
                        {starVisible && <span style={{ 'color': 'blue', 'float': 'right' }} className="glyphicon glyphicon-star"></span>}</h3>
-                    <h4> buy @ 1000 / buy 2 @ Rs : 1500</h4>
+                    <h4> buy 1 @ 1000 / buy 2 @ Rs : 1500</h4>
                     <div className="radioButtons">
                         <RadioGroup onChange={this.onPurchaseTypeChangeMen} horizontal>
                             <RadioButton rootColor={"black"} pointColor={"blue"} value="simple">

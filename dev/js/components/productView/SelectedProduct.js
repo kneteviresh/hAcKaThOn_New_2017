@@ -121,7 +121,7 @@ class SelectedProduct extends Component {
         if (userDetails.requested) {
             component =
                 <div className="col-md-5 sharePurchase">
-                    <p style={{ 'color': 'green', 'marginTop': '5px' }}> 2 others interested in sharing this offer</p>
+                    <p style={{ 'color': 'green', 'marginTop': '5px' }}> 1 other interested in sharing this offer</p>
                     <div>
                         <table className="table table-bordered">
                             <thead>

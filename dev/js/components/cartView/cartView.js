@@ -94,7 +94,18 @@ class cartView extends Component {
             float: 'right',
             color: userDetails.paymentDone ? 'green' : 'orange'
         }
-        var orderStatus = this.props.itemDetails[user].paymentDone ? this.props.itemDetails[user].ordeStatus : this.props.itemDetails[user].ordeStatus
+
+        if(this.props.itemDetails.menPurchaseType == "simple"){
+            orderStatus = 'success';
+            var orderStatusStyle = {
+                float: 'right',
+                color: 'green' 
+            }
+        }
+        else{
+            var orderStatus = this.props.itemDetails[user].paymentDone ? this.props.itemDetails[user].ordeStatus : this.props.itemDetails[user].ordeStatus
+        }
+        
         return (
             <div className="container">
                 {this.showMessage()}
