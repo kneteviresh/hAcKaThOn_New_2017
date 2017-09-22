@@ -16,14 +16,14 @@ export default {
       shared:false,
       requested: false,
       paymentDone: false,
-      ordeStatus: "Not"
+      ordeStatus: "Pending"
     },
     viresh: {
       id: "viresh",
       shared:false,
       requested: false,
       paymentDone: false,
-      ordeStatus: "Not"
+      ordeStatus: "Pending"
     }
   }
 };

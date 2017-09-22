@@ -21,12 +21,7 @@ class SelectedProduct extends Component {
         this.handleAccept = this.handleAccept.bind(this);
         this.handleInviteButton = this.handleInviteButton.bind(this);
         this.handleInviteSubmit = this.handleInviteSubmit.bind(this);
-    }
-
-    getCookie(name) {
-        var regexp = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
-        var result = regexp.exec(document.cookie);
-        return (result === null) ? null : result[1];
+        this.requestGoToCart = this.requestGoToCart.bind(this);
     }
 
     handleAddToCart() {
@@ -100,6 +95,16 @@ class SelectedProduct extends Component {
         this.props.updateInviteDetails(details);
     }
 
+    getCookie(name) {
+        var regexp = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
+        var result = regexp.exec(document.cookie);
+        return (result === null) ? null : result[1];
+    }
+
+    requestGoToCart() {
+        this.props.handleViewChange('cartView');
+    }
+
 
 
     getShareOfferOptions() {
@@ -131,18 +136,25 @@ class SelectedProduct extends Component {
                 </div>
         }
         else {
+            var user = this.getCookie('username');
+            if (user == "viresh")
+                var newUser = "kavith";
+            else
+                var newUser = "viresh";
+            var userDetails = this.props.itemDetails[newUser];
             component =
                 <div className="col-md-5 sharePurchase">
                     <p style={{ 'color': 'green', 'marginTop': '5px' }}> Requesr share offer with below invite button</p>
                     <div>
-                        <div className="inviteBuyers">
+                        {!userDetails.requested && <div className="inviteBuyers">
                             <button onClick={this.handleInviteButton} className="btn btn-primary buyNowButton">Invite</button>
                             {this.state.isRequestVisible && <div>
                                 <h5>Enter Message</h5>
                                 <textarea required rows={2} ref="message" ></textarea><br />
                                 <button onClick={this.handleInviteSubmit} className="btn btn-primary buyNowButton">Submit</button>
                             </div>}
-                        </div>
+                        </div>}
+                        {userDetails.requested && <button onClick={this.requestGoToCart} className="btn btn-primary buyNowButton">Go to cart</button>}
                     </div>
                 </div>
         }
