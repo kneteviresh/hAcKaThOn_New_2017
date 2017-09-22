@@ -22,6 +22,13 @@ class SelectedProduct extends Component {
         this.handleInviteButton = this.handleInviteButton.bind(this);
         this.handleInviteSubmit = this.handleInviteSubmit.bind(this);
         this.requestGoToCart = this.requestGoToCart.bind(this);
+        this.goBack = this.goBack.bind(this);
+    }
+
+    getCookie(name) {
+        var regexp = new RegExp("(?:^" + name + "|;\s*" + name + ")=(.*?)(?:;|$)", "g");
+        var result = regexp.exec(document.cookie);
+        return (result === null) ? null : result[1];
     }
 
     handleAddToCart() {
@@ -160,6 +167,9 @@ class SelectedProduct extends Component {
         }
         return component;
     }
+    goBack(){
+        this.props.handleViewChange('items');
+    }
 
 
     render() {
@@ -196,6 +206,7 @@ class SelectedProduct extends Component {
                         <div className="col-md-5 ownPurchase">
                             <p style={{ 'color': 'green', 'marginTop': '5px' }}> this product is available for buy 2 offer</p>
                             <h3>Enter Quantity : <input defaultValue={1} min={1} max={2} className="form-control" type="number" onChange={this.handleQuantity} /></h3>
+                            
                             <button onClick={this.handleBuyOwn} style={{ 'fontSize': '20px' }} className="btn btn-primary buyNowButton">
                                 {this.getButtonText()}
                             </button>
@@ -227,8 +238,15 @@ class SelectedProduct extends Component {
                             <button onClick={this.handleAddToCart} className="btn btn-primary buyNowButton" style={{ marginLeft: "50px" }}>Add to cart</button>
                         </div>
                     </div> */}
-                </div >
-            </div >
+                    <div className="col-md-10">
+                <button onClick={this.goBack} style={{ 'fontSize': '20px', 'width': '180px', 'float': 'right'  }} className="btn btn-primary buyNowButton">
+                                Back
+                            </button>
+                </div>
+                </div>
+                
+            </div>
+            
         );
     }
 }
