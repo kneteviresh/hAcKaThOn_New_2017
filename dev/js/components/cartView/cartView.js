@@ -44,6 +44,13 @@ class cartView extends Component {
         return (result === null) ? null : result[1];
     }
 
+    orderPlaced(){
+        this.setState({
+            showInfoMessage:true
+        })
+        
+     } 
+
     handlePayment() {
         var user = this.getCookie("userName");
         var component;
@@ -65,10 +72,14 @@ class cartView extends Component {
     }
 
     showMessage(){
+        let itemsStore = this.props.itemDetails;
         if((itemsStore.menPurchaseType == 'simple') && (this.state.showInfoMessage)){
             return <h5 style={{'background':'cadetblue','fontSize': '20px'}}>Thank you for placing the order. Will be delivered shortly</h5>
 
         }
+    }
+    goBack(){
+        this.props.handleViewChange('items')
     }
 
     render() {
@@ -119,12 +130,12 @@ class cartView extends Component {
                     <div className="col-md-8">
                         <button onClick={this.handlePayment} className="btn btn-primary buyNowButton" style={{ width: "auto", float: "right" }}><span><strong>Make payment and Place Order</strong></span></button>
                     <div className = "col-md-2">
-                       <button className="btn btn-primary buyNowButton" style={{ width: "180px", float: "right" }}><span onClick = {this.orderPlaced}><strong>Place Order</strong></span></button>
+                       <button onClick={this.goBack} className="btn btn-primary buyNowButton" style={{ width: "180px", float: "right" }}><span  ><strong>Back</strong></span></button>
                     </div>
                     <div className="col-md-10">
-                <button onClick={this.goBack} style={{ 'fontSize': '20px', 'width': '180px', 'float': 'right'  }} className="btn btn-primary buyNowButton">
+                {/* <button onClick={this.goBack} style={{ 'fontSize': '20px', 'width': '180px', 'float': 'right'  }} className="btn btn-primary buyNowButton">
                                 Back
-                            </button>
+                            </button> */}
                 </div>
                     </div>
                 </div>
@@ -141,7 +152,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateQuantity: (user) => {
+        updatePaymentDetails: (user) => {
             dispatch({
                 type: 'UPDATE_PAYMENT_DETAILS', user
             })
