@@ -6,8 +6,14 @@ import { connect } from 'react-redux';
 class cartView extends Component{
     constructor(props, context){
         super(props, context);
+        this.state = {
+            showInfoMessage : false
+        }
         this.calculatePrice = this.calculatePrice.bind(this);
         this.goBack = this.goBack.bind(this);
+        this.orderPlaced = this.orderPlaced.bind(this);
+        this.showMessage = this.showMessage.bind(this);
+        
     }
     calculatePrice(){
         let iteminStore = this.props.itemDetails;
@@ -26,9 +32,28 @@ class cartView extends Component{
     goBack(){
         this.props.handleViewChange('productsView');
     }
+    orderPlaced(){
+       
+       this.setState({
+           showInfoMessage:true
+       })
+       
+    }
+
+    showMessage(){
+        let itemsStore = this.props.itemDetails; 
+        if((itemsStore.menPurchaseType == 'simple') && (this.state.showInfoMessage)){
+           return <h5 style={{'background':'cadetblue','fontSize': '20px'}}>Thank you for placing the order. Will be delivered shortly</h5>
+
+       }
+    }
+
     render(){
         return(
             <div className="container">
+                <div>
+                {this.showMessage()}
+                </div>
                 <h1>My Shopping Bag (1 Item)</h1>
                 <table className="table" >
                     <thead>
@@ -58,7 +83,7 @@ class cartView extends Component{
                 </table>
                 <div className="row">
                     <div className = "col-md-2">
-                       <button className="btn btn-primary buyNowButton" style={{ width: "180px", float: "right" }}><span><strong>Place Order</strong></span></button>
+                       <button className="btn btn-primary buyNowButton" style={{ width: "180px", float: "right" }}><span onClick = {this.orderPlaced}><strong>Place Order</strong></span></button>
                     </div>
                     <div className="col-md-10">
                 <button onClick={this.goBack} style={{ 'fontSize': '20px', 'width': '180px', 'float': 'right'  }} className="btn btn-primary buyNowButton">
